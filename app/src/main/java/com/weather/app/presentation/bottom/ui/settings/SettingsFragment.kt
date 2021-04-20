@@ -1,6 +1,7 @@
 package com.weather.app.presentation.bottom.ui.settings
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.weather.app.R
 import com.weather.app.databinding.FragmentSettingsBinding
 import com.weather.app.presentation.bottom.ui.BottomViewModel
+import com.weather.app.presentation.help.HelpActivity
 
 class SettingsFragment : Fragment() {
 
@@ -33,7 +35,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.help?.setOnClickListener {
-
+            activity?.startActivity(Intent(activity, HelpActivity::class.java))
         }
 
         binding.removelocation.setOnClickListener {

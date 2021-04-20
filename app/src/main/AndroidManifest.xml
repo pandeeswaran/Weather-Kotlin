@@ -12,12 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".presentation.help.HelpActivity"></activity>
         <activity
             android:name=".presentation.city.CityActivity"
-            android:label="Locations"
-            ></activity>
+            android:label="Locations" />
         <activity
             android:name=".presentation.bottom.BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation" />
