@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="weather">Weather</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="map_box_token">pk.eyJ1IjoicGFuZGVlc3dhcmFuIiwiYSI6ImNrZ2IzN3EzbjA5bW4ycXFhbTQ2c3l5cjYifQ.im29UQtBMQ6e0JP1G2Zd8A</string>
+    <string name="user_location_permission_explanation">This app needs location permissions to show its functionality.</string>
+    <string name="user_location_permission_not_granted">You didn\'t grant location permissions.</string>
+    <string name="title_activity_bottom_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_help">Help</string>
+
+    <string name="current_weather">Today</string>
+    <string name="future_weather">This week</string>
+    <string name="future_weather_title">Weekly Forecast</string>
+    <string name="ok">OK</string>
+    <string name="retry">Retry</string>
+    <string name="allow">Allow</string>
+    <string name="not_available">NOT AVAILABLE</string>
+    <string name="not_available_description">TODO</string>
+    <string name="real_feel_label">Real feel:</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="wind_speed_label">Wind speed</string>
+    <string name="pressure_label">Pressure</string>
+    <string name="wind_direction_label">Wind direction</string>
+    <string name="visibility_label">Visibility</string>
+    <string name="settings_title">SETTINGS</string>
+    <string name="about_title">ABOUT</string>
+    <string name="clear_database">Remove all locations</string>
+    <string name="about_text_content">
+        \u0020Version: 0.1\n
+        Developers: Pandeeswaran.E\n
+        Weather Info: Powered by OpenWeatherMap API </string>
+    <string name="location_permissions_label">Allow location access</string>
+    <string name="location_enabled_label">GPS enabled</string>
+    <string name="weekly_forecast_shortcut_short_label">Weekly Forecast</string>
+    <string name="weekly_forecast_shortcut_long_label">Weekly Forecast</string>
+    <string name="settings_shortcut_short_label">Settings</string>
+    <string name="settings_shortcut_long_label">Settings</string>
+    <string name="disabled_shortcut_message">Not available</string>
+
+    <string name="humidity_percentage">%1$d %%</string>
+    <string name="atm_pressure">%1$d mb</string>
+    <string name="wind_speed">%1$d km/h</string>
+    <string name="temperature">%1$dº</string>
+    <string name="visibility">%1$d km</string>
+    <string name="no_records_found">No Records Found</string>
+    <string name="today">Today</string>
+    <string name="this_week">This week</string>
+    <string name="sensible">Sensible</string>
+
+
+</resources>
