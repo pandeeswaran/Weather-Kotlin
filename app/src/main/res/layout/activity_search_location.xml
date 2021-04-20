@@ -20,7 +20,7 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:tint="@android:color/white"
-            app:backgroundTint="@color/colorPrimary"
+            app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_search_category_default" />

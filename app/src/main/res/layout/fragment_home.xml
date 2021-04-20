@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="@string/current_weather"
             android:textColor="@color/colorBlack"
-            android:textSize="18sp"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -1,5 +1,6 @@
 package com.weather.app.presentation.city
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -39,33 +40,55 @@ class CityActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(getActivity, factory).get(CityViewModel::class.java)
 
         binding.fabAddLocation.setOnClickListener {
-            startActivity(Intent(getActivity, SearchLocationActivity::class.java))
+            startActivityForResult(Intent(getActivity, SearchLocationActivity::class.java), 100)
         }
+        getLocationFromDB()
+    }
 
+    private fun getLocationFromDB() {
         viewModel.getBookMarkedLocations().observe(this, { it ->
             if (it.isNotEmpty()) {
                 binding.tvNoData.visibility = View.GONE
                 binding.rcvLocation.visibility = View.VISIBLE
 
-                binding.rcvLocation.adapter = CityAdapter(it) {
-                    partItemClicked(
-                        it
-                    )
-                }
+                binding.rcvLocation.adapter =
+                    CityAdapter(it) { locationEntity: LocationEntity, i: Int ->
+                        partItemClicked(
+                            locationEntity, i
+                        )
+                    }
             } else {
                 binding.tvNoData.visibility = View.VISIBLE
                 binding.rcvLocation.visibility = View.GONE
             }
         })
-
     }
 
-    private fun partItemClicked(it: LocationEntity) {
+    private fun partItemClicked(it: LocationEntity, id: Int) {
         Log.e("it", "" + it.placeName)
-        viewModel.selectedEntity(it)
-        startActivity(
-            Intent(getActivity, BottomNavigationActivity::class.java).putExtra("id", it.id)
-        )
+
+        if (id == 0) {
+            viewModel.selectedEntity(it)
+            startActivityForResult(
+                Intent(getActivity, BottomNavigationActivity::class.java).putExtra("id", it.id), 100
+            )
+        } else {
+            Log.e("delete", "" + it.placeName)
+            viewModel.deleteById(it)
+            viewModel.refresh()
+            binding.rcvLocation.adapter?.notifyDataSetChanged()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 100) {
+            if (resultCode == Activity.RESULT_OK) {
+                viewModel.refresh()
+                getLocationFromDB()
+            }
+        }
     }
 
 }

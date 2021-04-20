@@ -2,6 +2,7 @@ package com.weather.app.presentation.mapbox
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -69,11 +70,15 @@ class SearchLocationActivity : AppCompatActivity(), OnMapReadyCallback, Permissi
         private var home: CarmenFeature? = null
         private var work: CarmenFeature? = null
         private const val DROPPED_MARKER_LAYER_ID = "DROPPED_MARKER_LAYER_ID"
+        private const val SOURCE_ID = "SOURCE_ID"
+        private const val ICON_ID = "ICON_ID"
+        private const val LAYER_ID = "LAYER_ID"
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppNoActionTheme)
         getActivity = this
         Mapbox.getInstance(getActivity, getString(R.string.map_box_token))
 
@@ -206,8 +211,11 @@ class SearchLocationActivity : AppCompatActivity(), OnMapReadyCallback, Permissi
                                 )
                                 .zoom(14.0)
                                 .build()
-                        ), 4000
+                        ), 500
                     )
+
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
                 }
             }
         }

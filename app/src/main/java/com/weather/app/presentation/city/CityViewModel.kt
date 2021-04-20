@@ -20,11 +20,24 @@ class CityViewModel(private var appDatabase: AppDatabase) : ViewModel() {
     }
 
     private fun getAll() = viewModelScope.launch(Dispatchers.IO) {
-
         locationEntity.postValue(appDatabase.locationEntity().getAll())
         appDatabase.locationEntity().getAll().forEach {
             // locationEntity.postValue(it)
             Log.e("Fetch Records", "Id:  : ${it.id}")
+            Log.e("Fetch Records", "Name:  : ${it.placeName}")
+        }
+
+    }
+
+    fun deleteById(id: LocationEntity) = viewModelScope.launch(Dispatchers.IO) {
+        appDatabase.locationEntity().deleteByObject(id)
+    }
+
+    fun refresh() = viewModelScope.launch(Dispatchers.IO) {
+        locationEntity.postValue(appDatabase.locationEntity().getAll())
+        appDatabase.locationEntity().getAll().forEach {
+            // locationEntity.postValue(it)
+            Log.e("Refersh Records", "Id:  : ${it.id}")
             Log.e("Fetch Records", "Name:  : ${it.placeName}")
         }
     }

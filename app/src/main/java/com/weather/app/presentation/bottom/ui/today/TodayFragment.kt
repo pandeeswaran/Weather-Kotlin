@@ -36,8 +36,7 @@ class TodayFragment : Fragment() {
         } ?: throw Exception("Invalid Activity")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        val currentDate = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
-
+        val currentDate = SimpleDateFormat("MMM dd, yyyy hh:mm:ss", Locale.getDefault()).format(Date())
         binding.dateTimeText.text = currentDate
         homeViewModel.selectedEntity.observe(viewLifecycleOwner, {
             binding.locationText.text = it.placeName.toString()

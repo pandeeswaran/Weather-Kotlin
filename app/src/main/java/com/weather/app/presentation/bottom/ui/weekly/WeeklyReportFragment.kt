@@ -40,7 +40,11 @@ class WeeklyReportFragment : Fragment() {
         } ?: throw Exception("Invalid Activity")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_help, container, false)
+
+        val currentDate = SimpleDateFormat("MMM dd, yyyy hh:mm:ss", Locale.getDefault()).format(Date())
+        binding.dateTimeText.text = currentDate
         bottomViewModel.selectedEntity.observe(viewLifecycleOwner, {
+            binding.locationText.text = it.placeName.toString()
             latitude = it.latitude!!
             longtitude = it.longitude!!
 

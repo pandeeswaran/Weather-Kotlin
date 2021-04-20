@@ -8,7 +8,7 @@ import com.weather.app.databinding.RowCityLayoutBinding
 
 class CityAdapter(
     private var locationEntity: List<LocationEntity>,
-    private val clickListener: (LocationEntity) -> Unit
+    private val clickListener: (LocationEntity, id: Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -26,11 +26,12 @@ class CityAdapter(
 
     inner class CityViewHolder(private val binding: RowCityLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(entity: LocationEntity, clickListener: (LocationEntity) -> Unit) {
+        fun bind(entity: LocationEntity, clickListener: (LocationEntity, Int) -> Unit) {
             binding.tvPlaceName.text = entity.placeName
             binding.tvLatitude.text = "Latitude: " + entity.latitude.toString()
             binding.tvLongitude.text = "Longitude: " + entity.longitude.toString()
-            binding.root.setOnClickListener { clickListener(entity) }
+            binding.rlParent?.setOnClickListener { clickListener(entity, 0) }
+            binding.imgDelete.setOnClickListener { clickListener(entity, 1) }
         }
     }
 }

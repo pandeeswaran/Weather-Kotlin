@@ -16,20 +16,24 @@
                 android:id="@+id/tvDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/helvetica_neue_medium"
-                android:textColor="@color/colorBlack"
-                android:textSize="13sp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDayName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/helvetica_neue_medium"
-                android:textColor="@color/colorBlack"
-                android:textSize="13sp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -40,8 +44,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivWeatherStatus"
-                    android:layout_width="60dp"
-                    android:layout_height="30dp" />
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvDescription"
@@ -49,8 +53,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/helvetica_neue_medium"
                     android:gravity="center"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="13sp"
+                    android:text=""
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -59,11 +64,13 @@
                 android:id="@+id/tvTemp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/helvetica_neue_medium"
                 android:gravity="end"
-                android:textColor="@color/colorBlack"
-                android:textSize="13sp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
         </TableRow>
     </LinearLayout>

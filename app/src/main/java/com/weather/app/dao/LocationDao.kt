@@ -1,10 +1,7 @@
 package com.weather.app.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.weather.app.data.entity.LocationEntity
 
 @Dao
@@ -21,6 +18,9 @@ interface LocationDao {
 
     @Query("DELETE FROM LocationEntity")
     fun deleteAll()
+
+    @Delete
+    fun deleteByObject(entity: LocationEntity)
 
     @Query("SELECT * FROM LocationEntity WHERE id=:id ")
     fun deleteSingleEntity(id: Int): LiveData<LocationEntity>

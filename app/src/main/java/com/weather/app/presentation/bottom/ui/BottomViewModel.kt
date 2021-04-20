@@ -5,18 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.weather.app.data.api.ApiService
 import com.weather.app.data.api.RetrofitBuilder
 import com.weather.app.data.entity.LocationEntity
+import com.weather.app.data.modal.current.WeatherReport
+import com.weather.app.data.modal.nextdayforecast.WeatherNextDaysReport
 import com.weather.app.data.room.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.weather.app.data.modal.current.WeatherReport
-import com.weather.app.data.modal.nextdayforecast.WeatherNextDaysReport
 
 class BottomViewModel(private var appDatabase: AppDatabase, private val id: Int) : ViewModel() {
 
@@ -35,6 +34,9 @@ class BottomViewModel(private var appDatabase: AppDatabase, private val id: Int)
         selectedEntity.value = entity;
     }
 
+    fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
+        appDatabase.locationEntity().deleteAll()
+    }
 
     private val apiRequest: ApiService = RetrofitBuilder.apiService
 
@@ -82,7 +84,7 @@ class BottomViewModel(private var appDatabase: AppDatabase, private val id: Int)
                     call: Call<WeatherNextDaysReport>,
                     response: Response<WeatherNextDaysReport>
                 ) {
-                 //   Log.d("TAG", "onResponse response:: ${Gson().toJson(response)}")
+                    //   Log.d("TAG", "onResponse response:: ${Gson().toJson(response)}")
                     if (response.body() != null) {
                         data.value = response.body()
                     }
