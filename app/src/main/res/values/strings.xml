@@ -48,6 +48,9 @@
     <string name="today">Today</string>
     <string name="this_week">This week</string>
     <string name="sensible">Sensible</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
 
 
 </resources>

@@ -30,27 +30,33 @@ class ForcastListAdapter(
 
     inner class WeatherViewHolder(private val binding: ItemNextForecastBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(entity: ListData, position: Int) {
-            if (position != 0) {
+            binding.ivWeatherStatus
+                .load("http://openweathermap.org/img/wn/" + entity.weather[0].icon + "@2x.png")
 
-                binding.ivWeatherStatus
-                    .load("http://openweathermap.org/img/wn/" + entity.weather[0].icon + "@2x.png")
+            binding.tvDescription.text = entity.weather[0].description
+            binding.tvHumidity.text = "" + entity?.main?.humidity + " %"
+            binding.tvWind.text = "" + entity?.wind?.speed + " km/h"
+            binding.tvSensible.text =
+                "" + (entity?.main?.feelsLike?.minus(273.15))?.toInt()
+                    .toString() + Html.fromHtml(" \u2103")
+            binding.tvPressure.text = "" + entity?.main?.pressure + " hPa"
 
-                binding.tvDescription.text = entity.weather[0].description
-
-                if (position == 1) {
-                    binding.tvDate.text = "Tommorrow"
-                } else {
-                    binding.tvDate.text = dateConvert(entity.getDtTxt()!!)
-                }
-                binding.tvDayName.text = dayConvert(entity.getDtTxt()!!)
-                binding.tvTemp.text =
-                    String.format(
-                        "%d%s",
-                        (entity.main?.temp?.minus(273.15))?.toInt(),
-                        Html.fromHtml(" \u2103")
-                    )
+            if (position == 0) {
+                binding.tvDate.text = "Today"
+            } else if (position == 1) {
+                binding.tvDate.text = "Tomorrow"
+            } else {
+                binding.tvDate.text = dateConvert(entity.getDtTxt()!!)
             }
+            binding.tvDayName.text = dayConvert(entity.getDtTxt()!!)
+            binding.tvTemp.text =
+                String.format(
+                    "%d%s",
+                    (entity.main?.temp?.minus(273.15))?.toInt(),
+                    Html.fromHtml(" \u2103")
+                )
         }
 
         //convert date format in dd-MM
